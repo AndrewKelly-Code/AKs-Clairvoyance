@@ -1,2 +1,2 @@
-# clairvoyance - A MacOS File Search Engine
+# Clairvoyance - A MacOS File Search Engine
 
