@@ -6,7 +6,7 @@
 *.dylib
 
 # Build output directories
-/build/
+/research/build/
 /bin/
 
 # macOS generated files
