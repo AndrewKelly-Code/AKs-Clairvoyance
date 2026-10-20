@@ -1,0 +1,15 @@
+# Compiled binaries and object files
+*.o
+*.out
+*.exe
+*.a
+*.dylib
+
+# Build output directories
+
+# macOS generated files
+*.dSYM/
+.DS_Store
+
+# IDE settings
+*.vscode
