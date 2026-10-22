@@ -13,3 +13,6 @@
 
 # IDE settings
 *.vscode
+
+# Dev Notes
+/docs/dev_notes/
