@@ -30,10 +30,32 @@ This document describes the proposed technical solution to implement the version
 **Dependency:**
 - None, it does not depend on any other internal or external application component
 
+### 4.2 File System Search and Traversal
+**Responsibilities:**
+- This component is reponsible for traversing the file system of the macOS device, retrieving files and directories that matches the user's search query, and storing the files inside an appropriate structure. 
+- If it encounters a directory that it could not access, it will continue it search and print out a simple error message stating that it could access certain directories. 
+**Inputs:**
+- It takes one string provided by the user through the command line after the input has been validated by the Command-Line Entry Point component.
+**Outputs:**
+- A list of files and directories, along with the path to those files and directories. 
+- An error message stating that it cannot access certain directories, if it came across one that it could not access
+**Dependencies:**
+- Depends on componenet 4.1 to validate the input
+### 4.2.1 File Name Matching 
+**Respoonsibility:**
+- Matches the name of a file to the search term. The files will be match according to whether or not the file contains a substring that matches exactly to the search term provided.
+**Inputs:**
+- One string from the command-line terminal
+**Outputs:**
+- Files and directories whose name contains the substring that matches the input string
+**Dependencies:**
+- Validated input from the user
+
 ## 5. Data and Control Flow
 
 ## 6. Error Handling and Edge Cases
 
 ## 7. Design Decisions and Trade-offs
-
+### 7.1 Command-Line Arguments VS. Interactive Inputs
+- Using argc and argv over std::cin
 
