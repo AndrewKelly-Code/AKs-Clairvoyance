@@ -50,6 +50,7 @@ This document describes the proposed technical solution to implement the version
 - Files and directories whose name contains the substring that matches the input string
 **Dependencies:**
 - Validated input from the user
+- std::string to be able to use functions available to that library for substring pattern matching
 
 ## 5. Data and Control Flow
 

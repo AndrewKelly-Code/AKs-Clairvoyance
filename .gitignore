@@ -6,6 +6,7 @@
 *.dylib
 
 # Build output directories
+/src/bin/
 
 # macOS generated files
 *.dSYM/
