@@ -1,4 +1,5 @@
-# Recursive Directory Iterator Function Using directory_iterator
+# 1. Recursive Directory Iterator Function Using directory_iterator
+
 ## Why it's needed
 - This function is needed to allow for recursive directory iterating, no matter the depth, while also providing more flexibility to handle errors
 ## Previous consideration
@@ -34,3 +35,62 @@ file1, file2, dir1, error, dir2, file5, file6
 
 ## Possible Logic Problems
 - It might be possible that the iterator never becomes an end iterator in certain circumstances. I'm not sure of when that's possible just yet, but I'm pretty sure that I've seen it in documentation somewhere that it is possible.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+# 2. Search Query Result Matching
+
+## Why It's Needed
+- This function allows the result from the recursive directory iterator function to be matched against the search term provided by the user and only returning the search result that contains the search query as a substring.
+
+## Previous Consideration
+
+## Proposed Solution
+- Use std::string::find() with the search term provided by the user and compare it against the results found by the recursive directory iterator function.
+- This pattern matching function will be used inside the recursive directory iterator function, so the search term needs to be passed into the function.
+
+## Input 
+- ./v1 photos <- search term
+
+## Expected Output
+In a directory that contains the following regular files and directory:
+- Photos 
+- cat-photos.jpg
+- analysis_of_photos_of_dogs.pdf
+- New_Years_Photos.png
+- ALL_PHOTOS.pdf
+- photo_of_weird_bird.gif
+- Photo_of_nothing.spooky
+
+The expected output would be:
+- Photos
+- cat-photos.jpg
+- analysis_of_photos_of_dogs.pdf
+- New_Years_Photos.png
+- ALL_PHOTOS.pdf
+
+## Error Handling
+- The proposed solution currently uses std::string::find() which doesn't throw any exception. 
+- I also can't think of an error that could occur in this component. 
+- If a search query wasn't specified, the program would've terminated before reaching this component.
+- If a search term doesn't match with any of the results, then it would expectedly, not output any results.
+
+## Possible Logic Problems
+
+-------------------------------------------------------------------------------------------------------------------------
+
+# 3. Output Formatting
+
+## Why It's Needed
+
+## Previous Consideration
+
+## Proposed Solution
+
+## Input 
+
+## Expected Output
+
+## Error Handling
+
+## Possible Logic Problems
