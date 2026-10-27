@@ -2,6 +2,7 @@
 #include <string>
 #include <filesystem>
 #include <system_error>
+#include <cstdlib>
 
 void recursive_directory_iterator(std::filesystem::path dir);
 
@@ -21,7 +22,7 @@ int main(int argc, char **argv)
 
     std::string search_term = argv[1];
 
-    std::filesystem::path home = "/"; // Change this to the path of the user's home directory
+    std::filesystem::path home = getenv("HOME"); // Change this to the path of the user's home directory
 
     // Recursively iterates over all files and directories located in the user's home directory
     recursive_directory_iterator(home);
