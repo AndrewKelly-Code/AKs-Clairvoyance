@@ -33,30 +33,54 @@ This document describes the proposed technical solution to implement the version
 ### 4.2 File System Search and Traversal
 **Responsibilities:**
 - This component is reponsible for traversing the file system of the macOS device, retrieving files and directories that matches the user's search query, and storing the files inside an appropriate structure. 
-- If it encounters a directory that it could not access, it will continue it search and print out a simple error message stating that it could access certain directories. 
+- If it encounters a directory that it could not access, it will continue its search, until it has reached all files and directories that it has access to
 **Inputs:**
 - It takes one string provided by the user through the command line after the input has been validated by the Command-Line Entry Point component.
 **Outputs:**
 - A list of files and directories, along with the path to those files and directories. 
-- An error message stating that it cannot access certain directories, if it came across one that it could not access
+- An error message stating that it cannot access certain directories, if it came across one that it could not access, without printing out exactly the error, or which directory it could not access.
 **Dependencies:**
 - Depends on componenet 4.1 to validate the input
 ### 4.2.1 File Name Matching 
 **Respoonsibility:**
-- Matches the name of a file to the search term. The files will be match according to whether or not the file contains a substring that matches exactly to the search term provided.
+- Matches the name of a file to the search term. The files will be match according to whether or not the file contains a substring that matches exactly to the search term provided, with case-insensitivity.
 **Inputs:**
 - One string from the command-line terminal
 **Outputs:**
-- Files and directories whose name contains the substring that matches the input string
+- Files and directories whose name contains the substring that matches the input string with case-insensitivity
 **Dependencies:**
-- Validated input from the user
-- std::string to be able to use functions available to that library for substring pattern matching
+- Valid input from the user
+- Custom tolower() function to transform an input into its lowercase form.
+### 4.3 Output Formatting
+**Responsibility**
+- It's responsible for displaying the results of the program using two columns for each row. 
+**Inputs**
+- The vector containing the results from the recursive directory iterator function
+- The length of the longest filename name found
+**Outputs**
+- two columns, the first column containing only the filename, the second containing the full path to the associated filename in the first column
+- The columns must be align for each row
+**Dependencies**
+- The recursive directory iterator function
 
 ## 5. Data and Control Flow
+1. A user would call the app from the CLI in the terminal, supplying it will one string which is the search query.
+2. The string would be passed into Main, which would check to see if the correct amount of arguments were given by the user
+3. The string would be passed into the recursive directory iterator
+4. The recursive directory iterator function would search through all files it has access to, starting at the user's home directory.
+5. It would store the results that matches the search query in a vector that was supplied to the function by reference
+6. The result vector would then be passed to the output function, which would display the filename and path of the objects stored inside the vector
 
 ## 6. Error Handling and Edge Cases
+- Appropriate messages are printed to the user in regards to the number of arguments supplied from the terminal
+- Currently, only one vague message saying that some directories could not be searched due to an error. Future iterations of the application would make it more clear which directories it did not have access to.
 
 ## 7. Design Decisions and Trade-offs
 ### 7.1 Command-Line Arguments VS. Interactive Inputs
-- Using argc and argv over std::cin
+- Using argc and argv over std::cin 
+- This is done because it's expected that the user would execute the command and would not be required to interact with the program further while it's running. 
+### 7.2 std::filesystem::directory_iterator VS. std::filesystem::recursive_directory_iterator
+- directory_iterator was chosen over recursive_directory_iterator as the program required finer control over how it would handle inaccessibly directories, particularly directories that produced a "Operation Not Permitted" or EPERM errors.
+- recursive_directory_iterator would terminate prematurely before all files and directories that it had access to was searched, so I needed to create a wrapper function around directory_iterator that reproduced the functionality of recursive_directory_iterator, but still continued to search after it encounters any errors.
+
 

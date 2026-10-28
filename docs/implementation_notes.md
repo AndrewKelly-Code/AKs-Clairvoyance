@@ -41,13 +41,13 @@ file1, file2, dir1, error, dir2, file5, file6
 # 2. Search Query Result Matching
 
 ## Why It's Needed
-- This function allows the result from the recursive directory iterator function to be matched against the search term provided by the user and only returning the search result that contains the search query as a substring.
+- This function allows the result from the recursive directory iterator function to be matched against the search term provided by the user and only returning the search result that contains the search query as a substring, regardless of case-sensitivity
 
 ## Previous Consideration
 
 ## Proposed Solution
-- Use std::string::find() with the search term provided by the user and compare it against the results found by the recursive directory iterator function.
-- This pattern matching function will be used inside the recursive directory iterator function, so the search term needs to be passed into the function.
+- Using a function to transform the search term into its lowercase form, before passing it to the recursive_directory_iterator function
+- Use std::string::find() with the search term provided by the user and compare it against the results found by the recursive directory iterator function, where the results are also passed through the function that transform it into its lowercase form.
 
 ## Input 
 - ./v1 photos <- search term
@@ -82,15 +82,23 @@ The expected output would be:
 # 3. Output Formatting
 
 ## Why It's Needed
+The output should be in two columns. 
+The first being the file or directory name, the second being the path where the file or directory is located
 
 ## Previous Consideration
 
 ## Proposed Solution
+Find the longest filename lenght + 1, and allocating enough space for the filename to fit and left-align on all rows
+Using a loop in the output formatting function that loops through all the results and print out the results in the correct columns
 
 ## Input 
+A vector of directory_entry objects that matched the search query
+The length of the longest filename found
 
 ## Expected Output
+"{filename}"  "{full path to file}"
 
 ## Error Handling
+- There should be no error for this function to handle, as all it does is print out the results from a vector it was supplied with
 
 ## Possible Logic Problems

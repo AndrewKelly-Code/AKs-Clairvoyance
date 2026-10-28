@@ -13,7 +13,8 @@ void recursive_directory_iterator(
     std::filesystem::path dir, 
     std::string search_term, 
     int &len,
-    std::vector<std::filesystem::directory_entry> &results
+    std::vector<std::filesystem::directory_entry> &results,
+    int &inaccessible
 );
 std::string str_tolower(std::string s);
 void output_format(std::vector<std::filesystem::directory_entry> results, int longest_name);
@@ -40,12 +41,18 @@ int main(int argc, char **argv)
 
     std::vector<std::filesystem::directory_entry> results;
     int longest_fn_len = 0;
+    int inaccessible = 0;
 
     // Recursively iterates over all files and directories located in the user's home directory
-    recursive_directory_iterator(home, lowered_search_term, longest_fn_len, results);
+    recursive_directory_iterator(home, lowered_search_term, longest_fn_len, results, inaccessible);
 
     ++longest_fn_len;
     output_format(results, longest_fn_len);
+    if (inaccessible == 1)
+    {
+        std::cout << "Some directories could not be searched due to an error!" << '\n';
+    }
+
 
     return 0;
 }
@@ -56,7 +63,8 @@ void recursive_directory_iterator(
     std::filesystem::path dir, 
     std::string search_term, 
     int &len,
-    std::vector<std::filesystem::directory_entry> &results
+    std::vector<std::filesystem::directory_entry> &results,
+    int &inaccessible
 )
 {
     for(auto const& dir_entry : std::filesystem::directory_iterator{dir})
@@ -77,10 +85,11 @@ void recursive_directory_iterator(
             }
 
             try{
-                recursive_directory_iterator(dir, search_term, len, results);
+                recursive_directory_iterator(dir, search_term, len, results, inaccessible);
             }
             catch(...){
                 // std::cerr << "Unable to access directory at: " << dir << '\n';
+                inaccessible = 1;
             }
         }
         else

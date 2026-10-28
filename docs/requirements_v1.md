@@ -14,7 +14,7 @@ The intended user group for this product is all user that owns a personal comput
 ## 2. Project Scope
 
 ### 2.1 In Scope
-1. The application shall take an input from the user, which is the name of the file or directory that the user is searching for
+1. The application shall take an input from the user, which is exactly one string
 2. The application shall use an internal pattern matching system to retrieve files and directories that matches the input given by the user
 3. The application shall display the result in a format that shows the name and location of the retrieved files and directories
 4. Everything must happen inside the terminal of the user's personal computer
