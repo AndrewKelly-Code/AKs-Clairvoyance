@@ -42,6 +42,7 @@ NOTE: Granting access to those directories are not just for this program, but al
 6. You can quit out of the pager view by pressing q on your keyboard
 
 ## 5. Examples
+![Example build and invokation of the test version of the program](./img/clairvoyance_example_2.png)
 ![Example of the results from the test version of the program](./img/clairvoyance_example.png)
 
 - This example is executed in a modified version of the program that supplied the current working directory where the program was launched from, rather then the usual user's home directory, to have better control over the testing environment.
