@@ -68,7 +68,7 @@ void recursive_directory_iterator(
 {
     for(auto const& dir_entry : std::filesystem::directory_iterator{dir})
     {
-        if(dir_entry.is_directory())
+        if(!(dir_entry.is_symlink()) && dir_entry.is_directory())
         {
             // std::cout << "Directory found: " << dir_entry.path() << '\n' << '\n';
             std::filesystem::path dir = dir_entry.path();

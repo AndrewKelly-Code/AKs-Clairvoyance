@@ -7,10 +7,9 @@ This document describes the proposed technical solution to implement the version
 
 ## 2. Design Goals and Constraints
 1. The application must be used in the command-line interface 
-2. The application must compile, execute and successfully complete all automated test on a macOS device
-3. The application is to be developed using C++ and its Standard libraries
-4. The application must locate and return files matching the search query without using an index
-5. The application must continue searching if it encounters a directory that it cannot access
+2. The application is to be developed using C++ and its Standard libraries
+3. The application must locate and return files matching the search query without using an index
+4. The application must continue searching if it encounters a directory that it cannot access
 
 ## 3. System Architecture
 
@@ -38,12 +37,12 @@ This document describes the proposed technical solution to implement the version
 - It takes one string provided by the user through the command line after the input has been validated by the Command-Line Entry Point component.
 **Outputs:**
 - A list of files and directories, along with the path to those files and directories. 
-- An error message stating that it cannot access certain directories, if it came across one that it could not access, without printing out exactly the error, or which directory it could not access.
+- An error message stating that it cannot access certain directories, if it came across one that it could not access, without printing out the exact error, or which directory it could not access.
 **Dependencies:**
 - Depends on componenet 4.1 to validate the input
 ### 4.2.1 File Name Matching 
 **Respoonsibility:**
-- Matches the name of a file to the search term. The files will be match according to whether or not the file contains a substring that matches exactly to the search term provided, with case-insensitivity.
+- Matches the name of a file to the search term. The files will be match according to whether or not the file contains a substring that matches the search term provided, with case-insensitivity.
 **Inputs:**
 - One string from the command-line terminal
 **Outputs:**

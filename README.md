@@ -1,4 +1,4 @@
-# Clairvoyance version 1.0.0 - A MacOS File Search Engine
+# AK's Clairvoyance - A MacOS File Search Engine version 1.0.0
 ## 1. Overview
 A lightweight command-line file search application written in C++. It recursively searches the user's home directory for files and directories matching a specified search term and displays matching results with their full paths.
 
@@ -51,7 +51,7 @@ NOTE: Granting access to those directories are not just for this program, but al
 - The program does not provide the user with the ability to open or launch the files and directory found
 - The program does not provide the user with the ability to traverse into the directory that is displayed in the output
 - The program only takes one string as an argument to be used for the search
-- The program only does a exact match, with case-insensitivity, for the search term entered
+- The program only does a substring match, with case-insensitivity, for the search term entered
 - The program does not display which directories it did not have access to 
 
 ## 7. Testing
