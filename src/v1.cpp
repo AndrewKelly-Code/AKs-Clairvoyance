@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <cctype>
 #include <algorithm>
-#include <format>
 #include <vector>
 #include <iomanip>
 
