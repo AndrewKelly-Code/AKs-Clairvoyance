@@ -42,6 +42,9 @@ NOTE: Granting access to those directories are not just for this program, but al
 6. You can quit out of the pager view by pressing q on your keyboard
 
 ## 5. Examples
+![Example of the results from the test version of the program](./img/clairvoyance_example.png)
+
+- This example is executed in a modified version of the program that supplied the current working directory where the program was launched from, rather then the usual user's home directory, to have better control over the testing environment.
 
 ## 6. Known Limitations
 - The program does not provide the user with the ability to open or launch the files and directory found
@@ -56,9 +59,9 @@ V1 was tested manually during development by executing the program through the t
 Individual functions were also tested informally during development. No automated test suite is currently included.
 
 ## 8. Documentations
-- The requirements documentation are located in /docs/requirements_v1.md
-- The designs documentation are located in /docs/design_v1.md
-- The implementation documentation for some features are located in /docs/implementation_notes.md
+- [Requirements](./docs/requirements_v1.md)
+- [Design](./docs/design_v1.md)
+- [Implementation](./docs/implementation_notes.md)
 
 ## 9. Future Improvements
 - The ability to search at different locations
@@ -68,6 +71,7 @@ Individual functions were also tested informally during development. No automate
 - The results displayed would be based on the internal score received by the internal ranking system, where the results are displayed based on score from highest to lowest
 - The program will match files and directories based on other conditions, not just substrings
 - The program will have the ability to display the information properly without needing the user to explicitly use | less -S
+- Create automated test suite for unit, integration, and regression testing using GitHub Actions
 
 
 
