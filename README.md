@@ -23,15 +23,23 @@ A lightweight command-line file search application written in C++. It recursivel
 - Git
 
 ## 4. Installation & build
-1. Clone the repository into your preferred directory using the following command:
+1. Clone the repository into your preferred directory using the following command: <br>
 git clone https://github.com/AndrewKelly-Code/clairvoyance.git 
+
 2. Navigate into the directory labelled src
-3. Build the program using the following command:
-clang++ -std=c++23 -Wall -Wextra -Wpedantic v1.cpp -o query
-4. Run the program using the following command in the src directory:
+
+3. Build the program using the following command: <br>
+clang++ -std=c++17 v1.cpp -o query
+
+4. Run the program using the following command in the src directory: <br>
 ./query search-term | less -S
-Where search-term is replaced by the string that you wish for the program to match the files it found against. It's case-insensitive
-5. You can quit out of the pager view by pressing q on your keyboard
+
+<br>Where search-term is replaced by the string that you wish for the program to match the files it found against. It's case-insensitive
+
+5. You will be asked by the system to grant permission to allow the app that you're using the command-line interface (CLI) to launch this program in, the default being Terminal, to access certain restricted directories. If you do not allow access to these directories, the program will not be able to search the contents inside those directories. <br>
+NOTE: Granting access to those directories are not just for this program, but all programs that are ran through the command-line interface. This can be managed in the system's settings.
+
+6. You can quit out of the pager view by pressing q on your keyboard
 
 ## 5. Examples
 
